@@ -32,6 +32,11 @@ RUN apt update -qq \
     && rosdep install --rosdistro $ROS_DISTRO --from-paths src --ignore-src -r -y \
     && rm -rf /var/lib/apt/lists/*
 
+COPY ./requirements.txt ./requirements.txt
+
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 
 CMD ["bash"]
