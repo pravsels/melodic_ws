@@ -4,7 +4,8 @@ To build the docker image:
 ```bash
 docker build -t melodic_ws .
 ```
-This builds a docker image from the Dockerfile script.
+This builds a docker image from the Dockerfile script. <br />
+**Note:** it expects the presence of a 'src' directory, even an empty one would do.
 
 Once the docker image is built, run a container by using the shell script provided:
 ```bash
