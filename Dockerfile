@@ -37,6 +37,10 @@ COPY ./requirements.txt ./requirements.txt
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
+RUN apt update \
+    && apt install ros-$ROS_DISTRO-joint-state-publisher-gui \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 
 CMD ["bash"]
