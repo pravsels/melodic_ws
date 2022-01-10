@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # install other packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python-pip  \
+    python-tk \ 
     python-catkin-tools \
     nano \
     && rm -rf /var/lib/apt/lists/*
