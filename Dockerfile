@@ -11,12 +11,24 @@ ENV NVIDIA_DRIVER_CAPABILITIES \
 
 # install ros packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-$ROS_DISTRO-desktop=1.4.1-0*
+    ros-$ROS_DISTRO-desktop=1.4.1-0* \
+    && rm -rf /var/lib/apt/lists/*
+
+# install Franka Emika, PCL, Octomap and MoveIt packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-$ROS_DISTRO-libfranka  \
+    ros-$ROS_DISTRO-franka-ros  \
+    ros-$ROS_DISTRO-moveit  \
+    ros-$ROS_DISTRO-moveit-resources  \
+    ros-$ROS_DISTRO-octomap*  \
+    libpcl-dev  \
+    ros-$ROS_DISTRO-pcl-ros  \
+    && rm -rf /var/lib/apt/lists/*
 
 # install other packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python-pip  \
-    python-tk \ 
+    python-tk \
     python-catkin-tools \
     nano \
     && rm -rf /var/lib/apt/lists/*
